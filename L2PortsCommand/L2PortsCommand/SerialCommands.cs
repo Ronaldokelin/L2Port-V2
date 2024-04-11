@@ -52,7 +52,7 @@ namespace L2PortsCommand
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error : " + ex);
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
     }

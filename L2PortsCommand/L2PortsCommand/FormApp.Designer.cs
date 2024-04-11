@@ -83,6 +83,15 @@ namespace L2ARAutomationSerialPort
             this.buttonDistance25 = new System.Windows.Forms.Button();
             this.buttonOrigin = new System.Windows.Forms.Button();
             this.tabPageL2Vision = new System.Windows.Forms.TabPage();
+            this.comboBoxSetLightSource = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnSendLightSource = new System.Windows.Forms.Button();
+            this.textBoxColorSet = new System.Windows.Forms.TextBox();
+            this.textBoxBrightnessSet = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnGetLightModel = new System.Windows.Forms.Button();
+            this.btnGetLigthVendor = new System.Windows.Forms.Button();
             this.btnStopLightSource01 = new System.Windows.Forms.Button();
             this.btnStartLightSourceFreq01 = new System.Windows.Forms.Button();
             this.btnGetLightSource01 = new System.Windows.Forms.Button();
@@ -103,8 +112,6 @@ namespace L2ARAutomationSerialPort
             this.buttonDownRGB = new System.Windows.Forms.Button();
             this.buttonUpRGB = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnGetLigthVendor = new System.Windows.Forms.Button();
-            this.btnGetLightModel = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabPageL2AR.SuspendLayout();
             this.grBxPower.SuspendLayout();
@@ -696,6 +703,13 @@ namespace L2ARAutomationSerialPort
             // 
             // tabPageL2Vision
             // 
+            this.tabPageL2Vision.Controls.Add(this.comboBoxSetLightSource);
+            this.tabPageL2Vision.Controls.Add(this.label6);
+            this.tabPageL2Vision.Controls.Add(this.btnSendLightSource);
+            this.tabPageL2Vision.Controls.Add(this.textBoxColorSet);
+            this.tabPageL2Vision.Controls.Add(this.textBoxBrightnessSet);
+            this.tabPageL2Vision.Controls.Add(this.label5);
+            this.tabPageL2Vision.Controls.Add(this.label4);
             this.tabPageL2Vision.Controls.Add(this.btnGetLightModel);
             this.tabPageL2Vision.Controls.Add(this.btnGetLigthVendor);
             this.tabPageL2Vision.Controls.Add(this.btnStopLightSource01);
@@ -713,9 +727,94 @@ namespace L2ARAutomationSerialPort
             this.tabPageL2Vision.Text = "L2VISION";
             this.tabPageL2Vision.UseVisualStyleBackColor = true;
             // 
+            // comboBoxSetLightSource
+            // 
+            this.comboBoxSetLightSource.FormattingEnabled = true;
+            this.comboBoxSetLightSource.Items.AddRange(new object[] {
+            "Set_LightSource_01_",
+            "Set_LightSource_FREQ_01_"});
+            this.comboBoxSetLightSource.Location = new System.Drawing.Point(20, 362);
+            this.comboBoxSetLightSource.Name = "comboBoxSetLightSource";
+            this.comboBoxSetLightSource.Size = new System.Drawing.Size(309, 28);
+            this.comboBoxSetLightSource.TabIndex = 66;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label6.Location = new System.Drawing.Point(17, 338);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(120, 20);
+            this.label6.TabIndex = 65;
+            this.label6.Text = "SetLightSource";
+            // 
+            // btnSendLightSource
+            // 
+            this.btnSendLightSource.Location = new System.Drawing.Point(21, 444);
+            this.btnSendLightSource.Name = "btnSendLightSource";
+            this.btnSendLightSource.Size = new System.Drawing.Size(106, 39);
+            this.btnSendLightSource.TabIndex = 63;
+            this.btnSendLightSource.Text = "SEND";
+            this.btnSendLightSource.UseVisualStyleBackColor = true;
+            this.btnSendLightSource.Click += new System.EventHandler(this.btnSendLightSource_Click);
+            // 
+            // textBoxColorSet
+            // 
+            this.textBoxColorSet.Location = new System.Drawing.Point(441, 362);
+            this.textBoxColorSet.Name = "textBoxColorSet";
+            this.textBoxColorSet.Size = new System.Drawing.Size(100, 26);
+            this.textBoxColorSet.TabIndex = 62;
+            // 
+            // textBoxBrightnessSet
+            // 
+            this.textBoxBrightnessSet.Location = new System.Drawing.Point(335, 362);
+            this.textBoxBrightnessSet.Name = "textBoxBrightnessSet";
+            this.textBoxBrightnessSet.Size = new System.Drawing.Size(100, 26);
+            this.textBoxBrightnessSet.TabIndex = 61;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label5.Location = new System.Drawing.Point(441, 339);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 20);
+            this.label5.TabIndex = 60;
+            this.label5.Text = "COLOR";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label4.Location = new System.Drawing.Point(331, 338);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 20);
+            this.label4.TabIndex = 59;
+            this.label4.Text = "BRIGHT";
+            // 
+            // btnGetLightModel
+            // 
+            this.btnGetLightModel.Location = new System.Drawing.Point(20, 130);
+            this.btnGetLightModel.Name = "btnGetLightModel";
+            this.btnGetLightModel.Size = new System.Drawing.Size(162, 58);
+            this.btnGetLightModel.TabIndex = 57;
+            this.btnGetLightModel.Text = "Get-LightSource Model";
+            this.btnGetLightModel.UseVisualStyleBackColor = true;
+            this.btnGetLightModel.Click += new System.EventHandler(this.btnGetLightModel_Click);
+            // 
+            // btnGetLigthVendor
+            // 
+            this.btnGetLigthVendor.Location = new System.Drawing.Point(21, 51);
+            this.btnGetLigthVendor.Name = "btnGetLigthVendor";
+            this.btnGetLigthVendor.Size = new System.Drawing.Size(162, 58);
+            this.btnGetLigthVendor.TabIndex = 56;
+            this.btnGetLigthVendor.Text = "Get-LightSource Vendor";
+            this.btnGetLigthVendor.UseVisualStyleBackColor = true;
+            this.btnGetLigthVendor.Click += new System.EventHandler(this.btnGetLigthVendor_Click);
+            // 
             // btnStopLightSource01
             // 
-            this.btnStopLightSource01.Location = new System.Drawing.Point(292, 207);
+            this.btnStopLightSource01.Location = new System.Drawing.Point(200, 202);
             this.btnStopLightSource01.Name = "btnStopLightSource01";
             this.btnStopLightSource01.Size = new System.Drawing.Size(162, 58);
             this.btnStopLightSource01.TabIndex = 55;
@@ -725,7 +824,7 @@ namespace L2ARAutomationSerialPort
             // 
             // btnStartLightSourceFreq01
             // 
-            this.btnStartLightSourceFreq01.Location = new System.Drawing.Point(292, 123);
+            this.btnStartLightSourceFreq01.Location = new System.Drawing.Point(20, 202);
             this.btnStartLightSourceFreq01.Name = "btnStartLightSourceFreq01";
             this.btnStartLightSourceFreq01.Size = new System.Drawing.Size(162, 58);
             this.btnStartLightSourceFreq01.TabIndex = 54;
@@ -735,7 +834,7 @@ namespace L2ARAutomationSerialPort
             // 
             // btnGetLightSource01
             // 
-            this.btnGetLightSource01.Location = new System.Drawing.Point(79, 284);
+            this.btnGetLightSource01.Location = new System.Drawing.Point(200, 51);
             this.btnGetLightSource01.Name = "btnGetLightSource01";
             this.btnGetLightSource01.Size = new System.Drawing.Size(162, 62);
             this.btnGetLightSource01.TabIndex = 53;
@@ -745,7 +844,7 @@ namespace L2ARAutomationSerialPort
             // 
             // btnGetLightSourceFreq01
             // 
-            this.btnGetLightSourceFreq01.Location = new System.Drawing.Point(292, 46);
+            this.btnGetLightSourceFreq01.Location = new System.Drawing.Point(379, 51);
             this.btnGetLightSourceFreq01.Name = "btnGetLightSourceFreq01";
             this.btnGetLightSourceFreq01.Size = new System.Drawing.Size(162, 58);
             this.btnGetLightSourceFreq01.TabIndex = 52;
@@ -755,7 +854,7 @@ namespace L2ARAutomationSerialPort
             // 
             // btnGetLightSourceSerialNum
             // 
-            this.btnGetLightSourceSerialNum.Location = new System.Drawing.Point(76, 207);
+            this.btnGetLightSourceSerialNum.Location = new System.Drawing.Point(199, 130);
             this.btnGetLightSourceSerialNum.Name = "btnGetLightSourceSerialNum";
             this.btnGetLightSourceSerialNum.Size = new System.Drawing.Size(163, 58);
             this.btnGetLightSourceSerialNum.TabIndex = 51;
@@ -928,26 +1027,6 @@ namespace L2ARAutomationSerialPort
             this.label3.TabIndex = 54;
             this.label3.Text = "                           RGB COMMANDS                           ";
             // 
-            // btnGetLigthVendor
-            // 
-            this.btnGetLigthVendor.Location = new System.Drawing.Point(76, 51);
-            this.btnGetLigthVendor.Name = "btnGetLigthVendor";
-            this.btnGetLigthVendor.Size = new System.Drawing.Size(162, 58);
-            this.btnGetLigthVendor.TabIndex = 56;
-            this.btnGetLigthVendor.Text = "Get-LightSource Vendor";
-            this.btnGetLigthVendor.UseVisualStyleBackColor = true;
-            this.btnGetLigthVendor.Click += new System.EventHandler(this.btnGetLigthVendor_Click);
-            // 
-            // btnGetLightModel
-            // 
-            this.btnGetLightModel.Location = new System.Drawing.Point(79, 130);
-            this.btnGetLightModel.Name = "btnGetLightModel";
-            this.btnGetLightModel.Size = new System.Drawing.Size(162, 58);
-            this.btnGetLightModel.TabIndex = 57;
-            this.btnGetLightModel.Text = "Get-LightSource Model";
-            this.btnGetLightModel.UseVisualStyleBackColor = true;
-            this.btnGetLightModel.Click += new System.EventHandler(this.btnGetLightModel_Click);
-            // 
             // FormSerialPortAutomation
             // 
             this.AcceptButton = this.buttonSend;
@@ -1073,5 +1152,12 @@ namespace L2ARAutomationSerialPort
         private System.Windows.Forms.Button btnGetLightSourceSerialNum;
         private System.Windows.Forms.Button btnGetLightModel;
         private System.Windows.Forms.Button btnGetLigthVendor;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnSendLightSource;
+        private System.Windows.Forms.TextBox textBoxColorSet;
+        private System.Windows.Forms.TextBox textBoxBrightnessSet;
+        private System.Windows.Forms.ComboBox comboBoxSetLightSource;
+        private System.Windows.Forms.Label label6;
     }
 }
