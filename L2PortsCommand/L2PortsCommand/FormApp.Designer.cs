@@ -87,10 +87,10 @@ namespace L2ARAutomationSerialPort
             this.labelFreq = new System.Windows.Forms.Label();
             this.textBoxBrightnessSet = new System.Windows.Forms.TextBox();
             this.comboBoxSetLightSource = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelSetLightSourceConfig = new System.Windows.Forms.Label();
             this.textBoxFrequency = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelSetLightSourceBright = new System.Windows.Forms.Label();
+            this.labelSetLightSourceColor = new System.Windows.Forms.Label();
             this.textBoxColorSet = new System.Windows.Forms.TextBox();
             this.btnSendLightSource = new System.Windows.Forms.Button();
             this.btnGetLightModel = new System.Windows.Forms.Button();
@@ -100,9 +100,9 @@ namespace L2ARAutomationSerialPort
             this.btnGetLightSource01 = new System.Windows.Forms.Button();
             this.btnGetLightSourceFreq01 = new System.Windows.Forms.Button();
             this.btnGetLightSourceSerialNum = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelL2VisionLightSourceCommands = new System.Windows.Forms.Label();
             this.tabPageSqt = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelSqtCommands = new System.Windows.Forms.Label();
             this.buttonDrStatus = new System.Windows.Forms.Button();
             this.buttonUnlockDr = new System.Windows.Forms.Button();
             this.buttonLockDr = new System.Windows.Forms.Button();
@@ -114,7 +114,7 @@ namespace L2ARAutomationSerialPort
             this.buttonLightOn = new System.Windows.Forms.Button();
             this.buttonDownRGB = new System.Windows.Forms.Button();
             this.buttonUpRGB = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelRgbCommands = new System.Windows.Forms.Label();
             this.labelColaborator = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabPageL2AR.SuspendLayout();
@@ -716,7 +716,7 @@ namespace L2ARAutomationSerialPort
             this.tabPageL2Vision.Controls.Add(this.btnGetLightSource01);
             this.tabPageL2Vision.Controls.Add(this.btnGetLightSourceFreq01);
             this.tabPageL2Vision.Controls.Add(this.btnGetLightSourceSerialNum);
-            this.tabPageL2Vision.Controls.Add(this.label1);
+            this.tabPageL2Vision.Controls.Add(this.labelL2VisionLightSourceCommands);
             this.tabPageL2Vision.ForeColor = System.Drawing.Color.Black;
             this.tabPageL2Vision.Location = new System.Drawing.Point(4, 29);
             this.tabPageL2Vision.Name = "tabPageL2Vision";
@@ -731,10 +731,10 @@ namespace L2ARAutomationSerialPort
             this.groupBoxLightSourceConfig.Controls.Add(this.labelFreq);
             this.groupBoxLightSourceConfig.Controls.Add(this.textBoxBrightnessSet);
             this.groupBoxLightSourceConfig.Controls.Add(this.comboBoxSetLightSource);
-            this.groupBoxLightSourceConfig.Controls.Add(this.label6);
+            this.groupBoxLightSourceConfig.Controls.Add(this.labelSetLightSourceConfig);
             this.groupBoxLightSourceConfig.Controls.Add(this.textBoxFrequency);
-            this.groupBoxLightSourceConfig.Controls.Add(this.label4);
-            this.groupBoxLightSourceConfig.Controls.Add(this.label5);
+            this.groupBoxLightSourceConfig.Controls.Add(this.labelSetLightSourceBright);
+            this.groupBoxLightSourceConfig.Controls.Add(this.labelSetLightSourceColor);
             this.groupBoxLightSourceConfig.Controls.Add(this.textBoxColorSet);
             this.groupBoxLightSourceConfig.Controls.Add(this.btnSendLightSource);
             this.groupBoxLightSourceConfig.Location = new System.Drawing.Point(6, 280);
@@ -773,15 +773,15 @@ namespace L2ARAutomationSerialPort
             this.comboBoxSetLightSource.TabIndex = 66;
             this.comboBoxSetLightSource.SelectedIndexChanged += new System.EventHandler(this.comboBoxSetLightSource_SelectedIndexChanged);
             // 
-            // label6
+            // labelSetLightSourceConfig
             // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label6.Location = new System.Drawing.Point(-2, 30);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 20);
-            this.label6.TabIndex = 65;
-            this.label6.Text = "SetLightSource";
+            this.labelSetLightSourceConfig.AutoSize = true;
+            this.labelSetLightSourceConfig.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelSetLightSourceConfig.Location = new System.Drawing.Point(-2, 30);
+            this.labelSetLightSourceConfig.Name = "labelSetLightSourceConfig";
+            this.labelSetLightSourceConfig.Size = new System.Drawing.Size(120, 20);
+            this.labelSetLightSourceConfig.TabIndex = 65;
+            this.labelSetLightSourceConfig.Text = "SetLightSource";
             // 
             // textBoxFrequency
             // 
@@ -790,25 +790,25 @@ namespace L2ARAutomationSerialPort
             this.textBoxFrequency.Size = new System.Drawing.Size(206, 26);
             this.textBoxFrequency.TabIndex = 67;
             // 
-            // label4
+            // labelSetLightSourceBright
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label4.Location = new System.Drawing.Point(309, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 20);
-            this.label4.TabIndex = 59;
-            this.label4.Text = "BRIGHT";
+            this.labelSetLightSourceBright.AutoSize = true;
+            this.labelSetLightSourceBright.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelSetLightSourceBright.Location = new System.Drawing.Point(309, 32);
+            this.labelSetLightSourceBright.Name = "labelSetLightSourceBright";
+            this.labelSetLightSourceBright.Size = new System.Drawing.Size(71, 20);
+            this.labelSetLightSourceBright.TabIndex = 59;
+            this.labelSetLightSourceBright.Text = "BRIGHT";
             // 
-            // label5
+            // labelSetLightSourceColor
             // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label5.Location = new System.Drawing.Point(419, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 20);
-            this.label5.TabIndex = 60;
-            this.label5.Text = "COLOR";
+            this.labelSetLightSourceColor.AutoSize = true;
+            this.labelSetLightSourceColor.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelSetLightSourceColor.Location = new System.Drawing.Point(419, 33);
+            this.labelSetLightSourceColor.Name = "labelSetLightSourceColor";
+            this.labelSetLightSourceColor.Size = new System.Drawing.Size(65, 20);
+            this.labelSetLightSourceColor.TabIndex = 60;
+            this.labelSetLightSourceColor.Text = "COLOR";
             // 
             // textBoxColorSet
             // 
@@ -897,20 +897,20 @@ namespace L2ARAutomationSerialPort
             this.btnGetLightSourceSerialNum.UseVisualStyleBackColor = true;
             this.btnGetLightSourceSerialNum.Click += new System.EventHandler(this.btnGetLightSourceSerialNum_Click);
             // 
-            // label1
+            // labelL2VisionLightSourceCommands
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.SteelBlue;
-            this.label1.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.label1.Location = new System.Drawing.Point(46, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(484, 20);
-            this.label1.TabIndex = 50;
-            this.label1.Text = "                        L2VISION LIGHT PANEL COMMANDS                         ";
+            this.labelL2VisionLightSourceCommands.AutoSize = true;
+            this.labelL2VisionLightSourceCommands.BackColor = System.Drawing.Color.SteelBlue;
+            this.labelL2VisionLightSourceCommands.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.labelL2VisionLightSourceCommands.Location = new System.Drawing.Point(46, 3);
+            this.labelL2VisionLightSourceCommands.Name = "labelL2VisionLightSourceCommands";
+            this.labelL2VisionLightSourceCommands.Size = new System.Drawing.Size(484, 20);
+            this.labelL2VisionLightSourceCommands.TabIndex = 50;
+            this.labelL2VisionLightSourceCommands.Text = "                        L2VISION LIGHT PANEL COMMANDS                         ";
             // 
             // tabPageSqt
             // 
-            this.tabPageSqt.Controls.Add(this.label2);
+            this.tabPageSqt.Controls.Add(this.labelSqtCommands);
             this.tabPageSqt.Controls.Add(this.buttonDrStatus);
             this.tabPageSqt.Controls.Add(this.buttonUnlockDr);
             this.tabPageSqt.Controls.Add(this.buttonLockDr);
@@ -925,16 +925,16 @@ namespace L2ARAutomationSerialPort
             this.tabPageSqt.Text = "SQT";
             this.tabPageSqt.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // labelSqtCommands
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.SteelBlue;
-            this.label2.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.label2.Location = new System.Drawing.Point(102, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(355, 20);
-            this.label2.TabIndex = 53;
-            this.label2.Text = "                           SQT COMMANDS                           ";
+            this.labelSqtCommands.AutoSize = true;
+            this.labelSqtCommands.BackColor = System.Drawing.Color.SteelBlue;
+            this.labelSqtCommands.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.labelSqtCommands.Location = new System.Drawing.Point(102, 3);
+            this.labelSqtCommands.Name = "labelSqtCommands";
+            this.labelSqtCommands.Size = new System.Drawing.Size(355, 20);
+            this.labelSqtCommands.TabIndex = 53;
+            this.labelSqtCommands.Text = "                           SQT COMMANDS                           ";
             // 
             // buttonDrStatus
             // 
@@ -993,7 +993,7 @@ namespace L2ARAutomationSerialPort
             this.tabPageRGB.Controls.Add(this.buttonLightOn);
             this.tabPageRGB.Controls.Add(this.buttonDownRGB);
             this.tabPageRGB.Controls.Add(this.buttonUpRGB);
-            this.tabPageRGB.Controls.Add(this.label3);
+            this.tabPageRGB.Controls.Add(this.labelRgbCommands);
             this.tabPageRGB.ForeColor = System.Drawing.Color.Black;
             this.tabPageRGB.Location = new System.Drawing.Point(4, 29);
             this.tabPageRGB.Name = "tabPageRGB";
@@ -1051,16 +1051,16 @@ namespace L2ARAutomationSerialPort
             this.buttonUpRGB.Text = "OPEN";
             this.buttonUpRGB.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // labelRgbCommands
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.SteelBlue;
-            this.label3.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.label3.Location = new System.Drawing.Point(57, 3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(359, 20);
-            this.label3.TabIndex = 54;
-            this.label3.Text = "                           RGB COMMANDS                           ";
+            this.labelRgbCommands.AutoSize = true;
+            this.labelRgbCommands.BackColor = System.Drawing.Color.SteelBlue;
+            this.labelRgbCommands.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.labelRgbCommands.Location = new System.Drawing.Point(57, 3);
+            this.labelRgbCommands.Name = "labelRgbCommands";
+            this.labelRgbCommands.Size = new System.Drawing.Size(359, 20);
+            this.labelRgbCommands.TabIndex = 54;
+            this.labelRgbCommands.Text = "                           RGB COMMANDS                           ";
             // 
             // labelColaborator
             // 
@@ -1170,14 +1170,14 @@ namespace L2ARAutomationSerialPort
         private System.Windows.Forms.Button buttonLockDr;
         private System.Windows.Forms.Button buttonMoveDown;
         private System.Windows.Forms.Button buttonMoveUp;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelL2VisionLightSourceCommands;
+        private System.Windows.Forms.Label labelSqtCommands;
         private System.Windows.Forms.TabPage tabPageRGB;
         private System.Windows.Forms.Button buttonLightOff;
         private System.Windows.Forms.Button buttonLightOn;
         private System.Windows.Forms.Button buttonDownRGB;
         private System.Windows.Forms.Button buttonUpRGB;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelRgbCommands;
         private System.Windows.Forms.Button buttonFetl;
         private System.Windows.Forms.Button LckClose;
         private System.Windows.Forms.Button LckOpen;
@@ -1201,13 +1201,13 @@ namespace L2ARAutomationSerialPort
         private System.Windows.Forms.Button btnGetLightSourceSerialNum;
         private System.Windows.Forms.Button btnGetLightModel;
         private System.Windows.Forms.Button btnGetLigthVendor;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelSetLightSourceBright;
+        private System.Windows.Forms.Label labelSetLightSourceColor;
         private System.Windows.Forms.Button btnSendLightSource;
         private System.Windows.Forms.TextBox textBoxColorSet;
         private System.Windows.Forms.TextBox textBoxBrightnessSet;
         private System.Windows.Forms.ComboBox comboBoxSetLightSource;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelSetLightSourceConfig;
         private System.Windows.Forms.GroupBox groupBoxLightSourceConfig;
         private System.Windows.Forms.TextBox textBoxFrequency;
         private System.Windows.Forms.Label labelFreq;
