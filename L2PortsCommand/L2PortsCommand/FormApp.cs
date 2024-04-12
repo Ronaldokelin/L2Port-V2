@@ -539,6 +539,29 @@ namespace L2ARAutomationSerialPort
             serialCmd.sendSerialComandAndRead(comboBoxSetLightSource.Text + textBoxBrightnessSet.Text + "_" + textBoxColorSet.Text, "button");
             textBoxBrightnessSet.Text = "";
             textBoxColorSet.Text = "";
+
+        }
+
+
+        private void comboBoxSetLightSource_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxSetLightSource.Text == "Set_LightSource_FREQ_01_")
+            {
+                textBoxBrightnessSet.Enabled = false;
+                textBoxColorSet.Enabled = false;
+            }
+            else
+            {
+                textBoxBrightnessSet.Enabled = true;
+                textBoxColorSet.Enabled = true;
+            }
+            if (comboBoxSetLightSource.Text == "Set_LightSource_01_")
+            {
+                textBoxFrequency.Enabled = false;
+            }
+            else
+                textBoxFrequency.Enabled = true;
+
         }
     }
 }

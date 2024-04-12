@@ -112,6 +112,9 @@ namespace L2ARAutomationSerialPort
             this.buttonDownRGB = new System.Windows.Forms.Button();
             this.buttonUpRGB = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBoxFrequency = new System.Windows.Forms.TextBox();
+            this.groupBoxLightSourceConfig = new System.Windows.Forms.GroupBox();
+            this.labelFreq = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabPageL2AR.SuspendLayout();
             this.grBxPower.SuspendLayout();
@@ -121,6 +124,7 @@ namespace L2ARAutomationSerialPort
             this.tabPageL2Vision.SuspendLayout();
             this.tabPageSqt.SuspendLayout();
             this.tabPageRGB.SuspendLayout();
+            this.groupBoxLightSourceConfig.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelPort
@@ -703,13 +707,7 @@ namespace L2ARAutomationSerialPort
             // 
             // tabPageL2Vision
             // 
-            this.tabPageL2Vision.Controls.Add(this.comboBoxSetLightSource);
-            this.tabPageL2Vision.Controls.Add(this.label6);
-            this.tabPageL2Vision.Controls.Add(this.btnSendLightSource);
-            this.tabPageL2Vision.Controls.Add(this.textBoxColorSet);
-            this.tabPageL2Vision.Controls.Add(this.textBoxBrightnessSet);
-            this.tabPageL2Vision.Controls.Add(this.label5);
-            this.tabPageL2Vision.Controls.Add(this.label4);
+            this.tabPageL2Vision.Controls.Add(this.groupBoxLightSourceConfig);
             this.tabPageL2Vision.Controls.Add(this.btnGetLightModel);
             this.tabPageL2Vision.Controls.Add(this.btnGetLigthVendor);
             this.tabPageL2Vision.Controls.Add(this.btnStopLightSource01);
@@ -733,16 +731,17 @@ namespace L2ARAutomationSerialPort
             this.comboBoxSetLightSource.Items.AddRange(new object[] {
             "Set_LightSource_01_",
             "Set_LightSource_FREQ_01_"});
-            this.comboBoxSetLightSource.Location = new System.Drawing.Point(20, 362);
+            this.comboBoxSetLightSource.Location = new System.Drawing.Point(1, 54);
             this.comboBoxSetLightSource.Name = "comboBoxSetLightSource";
             this.comboBoxSetLightSource.Size = new System.Drawing.Size(309, 28);
             this.comboBoxSetLightSource.TabIndex = 66;
+            this.comboBoxSetLightSource.SelectedIndexChanged += new System.EventHandler(this.comboBoxSetLightSource_SelectedIndexChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label6.Location = new System.Drawing.Point(17, 338);
+            this.label6.Location = new System.Drawing.Point(-2, 30);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(120, 20);
             this.label6.TabIndex = 65;
@@ -750,7 +749,7 @@ namespace L2ARAutomationSerialPort
             // 
             // btnSendLightSource
             // 
-            this.btnSendLightSource.Location = new System.Drawing.Point(21, 444);
+            this.btnSendLightSource.Location = new System.Drawing.Point(418, 161);
             this.btnSendLightSource.Name = "btnSendLightSource";
             this.btnSendLightSource.Size = new System.Drawing.Size(106, 39);
             this.btnSendLightSource.TabIndex = 63;
@@ -760,14 +759,14 @@ namespace L2ARAutomationSerialPort
             // 
             // textBoxColorSet
             // 
-            this.textBoxColorSet.Location = new System.Drawing.Point(441, 362);
+            this.textBoxColorSet.Location = new System.Drawing.Point(419, 56);
             this.textBoxColorSet.Name = "textBoxColorSet";
             this.textBoxColorSet.Size = new System.Drawing.Size(100, 26);
             this.textBoxColorSet.TabIndex = 62;
             // 
             // textBoxBrightnessSet
             // 
-            this.textBoxBrightnessSet.Location = new System.Drawing.Point(335, 362);
+            this.textBoxBrightnessSet.Location = new System.Drawing.Point(313, 56);
             this.textBoxBrightnessSet.Name = "textBoxBrightnessSet";
             this.textBoxBrightnessSet.Size = new System.Drawing.Size(100, 26);
             this.textBoxBrightnessSet.TabIndex = 61;
@@ -776,7 +775,7 @@ namespace L2ARAutomationSerialPort
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label5.Location = new System.Drawing.Point(441, 339);
+            this.label5.Location = new System.Drawing.Point(419, 33);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 20);
             this.label5.TabIndex = 60;
@@ -786,7 +785,7 @@ namespace L2ARAutomationSerialPort
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label4.Location = new System.Drawing.Point(331, 338);
+            this.label4.Location = new System.Drawing.Point(309, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 20);
             this.label4.TabIndex = 59;
@@ -1027,6 +1026,41 @@ namespace L2ARAutomationSerialPort
             this.label3.TabIndex = 54;
             this.label3.Text = "                           RGB COMMANDS                           ";
             // 
+            // textBoxFrequency
+            // 
+            this.textBoxFrequency.Location = new System.Drawing.Point(313, 119);
+            this.textBoxFrequency.Name = "textBoxFrequency";
+            this.textBoxFrequency.Size = new System.Drawing.Size(206, 26);
+            this.textBoxFrequency.TabIndex = 67;
+            // 
+            // groupBoxLightSourceConfig
+            // 
+            this.groupBoxLightSourceConfig.Controls.Add(this.labelFreq);
+            this.groupBoxLightSourceConfig.Controls.Add(this.textBoxBrightnessSet);
+            this.groupBoxLightSourceConfig.Controls.Add(this.comboBoxSetLightSource);
+            this.groupBoxLightSourceConfig.Controls.Add(this.label6);
+            this.groupBoxLightSourceConfig.Controls.Add(this.textBoxFrequency);
+            this.groupBoxLightSourceConfig.Controls.Add(this.label4);
+            this.groupBoxLightSourceConfig.Controls.Add(this.label5);
+            this.groupBoxLightSourceConfig.Controls.Add(this.textBoxColorSet);
+            this.groupBoxLightSourceConfig.Controls.Add(this.btnSendLightSource);
+            this.groupBoxLightSourceConfig.Location = new System.Drawing.Point(6, 280);
+            this.groupBoxLightSourceConfig.Name = "groupBoxLightSourceConfig";
+            this.groupBoxLightSourceConfig.Size = new System.Drawing.Size(564, 289);
+            this.groupBoxLightSourceConfig.TabIndex = 68;
+            this.groupBoxLightSourceConfig.TabStop = false;
+            this.groupBoxLightSourceConfig.Text = "LightSource Config";
+            // 
+            // labelFreq
+            // 
+            this.labelFreq.AutoSize = true;
+            this.labelFreq.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelFreq.Location = new System.Drawing.Point(309, 96);
+            this.labelFreq.Name = "labelFreq";
+            this.labelFreq.Size = new System.Drawing.Size(84, 20);
+            this.labelFreq.TabIndex = 68;
+            this.labelFreq.Text = "Frequency";
+            // 
             // FormSerialPortAutomation
             // 
             this.AcceptButton = this.buttonSend;
@@ -1069,6 +1103,8 @@ namespace L2ARAutomationSerialPort
             this.tabPageSqt.PerformLayout();
             this.tabPageRGB.ResumeLayout(false);
             this.tabPageRGB.PerformLayout();
+            this.groupBoxLightSourceConfig.ResumeLayout(false);
+            this.groupBoxLightSourceConfig.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1159,5 +1195,8 @@ namespace L2ARAutomationSerialPort
         private System.Windows.Forms.TextBox textBoxBrightnessSet;
         private System.Windows.Forms.ComboBox comboBoxSetLightSource;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBoxLightSourceConfig;
+        private System.Windows.Forms.TextBox textBoxFrequency;
+        private System.Windows.Forms.Label labelFreq;
     }
 }
