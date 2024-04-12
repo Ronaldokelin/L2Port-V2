@@ -115,6 +115,7 @@ namespace L2ARAutomationSerialPort
             this.buttonDownRGB = new System.Windows.Forms.Button();
             this.buttonUpRGB = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.labelColaborator = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabPageL2AR.SuspendLayout();
             this.grBxPower.SuspendLayout();
@@ -297,7 +298,7 @@ namespace L2ARAutomationSerialPort
             // 
             // buttonClear
             // 
-            this.buttonClear.BackColor = System.Drawing.Color.SkyBlue;
+            this.buttonClear.BackColor = System.Drawing.Color.LimeGreen;
             this.buttonClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonClear.ForeColor = System.Drawing.Color.Black;
@@ -1061,12 +1062,24 @@ namespace L2ARAutomationSerialPort
             this.label3.TabIndex = 54;
             this.label3.Text = "                           RGB COMMANDS                           ";
             // 
+            // labelColaborator
+            // 
+            this.labelColaborator.AutoSize = true;
+            this.labelColaborator.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelColaborator.ForeColor = System.Drawing.Color.SkyBlue;
+            this.labelColaborator.Location = new System.Drawing.Point(7, 614);
+            this.labelColaborator.Name = "labelColaborator";
+            this.labelColaborator.Size = new System.Drawing.Size(159, 17);
+            this.labelColaborator.TabIndex = 69;
+            this.labelColaborator.Text = "Collaborator: Ronaldo.K";
+            // 
             // FormSerialPortAutomation
             // 
             this.AcceptButton = this.buttonSend;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 643);
+            this.Controls.Add(this.labelColaborator);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.buttonClear);
@@ -1198,5 +1211,6 @@ namespace L2ARAutomationSerialPort
         private System.Windows.Forms.GroupBox groupBoxLightSourceConfig;
         private System.Windows.Forms.TextBox textBoxFrequency;
         private System.Windows.Forms.Label labelFreq;
+        private System.Windows.Forms.Label labelColaborator;
     }
 }
