@@ -536,12 +536,18 @@ namespace L2ARAutomationSerialPort
 
         private void btnSendLightSource_Click(object sender, EventArgs e)
         {
-            serialCmd.sendSerialComandAndRead(comboBoxSetLightSource.Text + textBoxBrightnessSet.Text + "_" + textBoxColorSet.Text, "button");
-            textBoxBrightnessSet.Text = "";
-            textBoxColorSet.Text = "";
-
+            if (comboBoxSetLightSource.Text == "Set_LightSource_01_")
+            {
+                serialCmd.sendSerialComandAndRead(comboBoxSetLightSource.Text + textBoxBrightnessSet.Text + "_" + textBoxColorSet.Text, "button");
+                textBoxBrightnessSet.Text = "";
+                textBoxColorSet.Text = "";
+            }
+            else
+            {
+                serialCmd.sendSerialComandAndRead(comboBoxSetLightSource.Text + textBoxFrequency.Text, "button");
+                textBoxFrequency.Text = "";
+            }
         }
-
 
         private void comboBoxSetLightSource_SelectedIndexChanged(object sender, EventArgs e)
         {
