@@ -32,3 +32,4 @@ C:\DevelopmentProjects\L2PORTS\L2PortsCommand\L2PortsCommand\bin\Debug\NationalI
 C:\DevelopmentProjects\L2PORTS\L2PortsCommand\L2PortsCommand\bin\Debug\NationalInstruments.Common.Native.dll
 C:\DevelopmentProjects\L2PORTS\L2PortsCommand\L2PortsCommand\bin\Debug\NationalInstruments.VisaNS.dll
 C:\DevelopmentProjects\L2PORTS\L2PortsCommand\L2PortsCommand\obj\Debug\SerialPortsCommands.csproj.L2PortsCommand.exe.config
+C:\DevelopmentProjects\L2PORTS\L2PortsCommand\L2PortsCommand\obj\Debug\SerialPortsCommands.csprojResolveAssemblyReference.cache

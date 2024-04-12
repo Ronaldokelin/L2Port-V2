@@ -20,6 +20,7 @@ namespace L2ARAutomationSerialPort
             INSTANCE = this;
             //instanceSerialCommands();
             instanceClasses();
+            disableTexBox();
         }
 
         public static FormSerialPortAutomation getInstance()
@@ -557,6 +558,7 @@ namespace L2ARAutomationSerialPort
 
         private void comboBoxSetLightSource_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             if (comboBoxSetLightSource.Text == "Set_LightSource_FREQ_01_")
             {
                 textBoxBrightnessSet.Enabled = false;
@@ -574,6 +576,12 @@ namespace L2ARAutomationSerialPort
             else
                 textBoxFrequency.Enabled = true;
 
+        }
+        private void disableTexBox()
+        {
+            textBoxBrightnessSet.Enabled = false;
+            textBoxColorSet.Enabled = false;
+            textBoxFrequency.Enabled = false;
         }
     }
 }
