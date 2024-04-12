@@ -536,17 +536,23 @@ namespace L2ARAutomationSerialPort
 
         private void btnSendLightSource_Click(object sender, EventArgs e)
         {
-            if (comboBoxSetLightSource.Text == "Set_LightSource_01_")
+            if (textBoxBrightnessSet.TextLength == 4 && textBoxColorSet.TextLength == 4 || textBoxFrequency.TextLength == 3)
             {
-                serialCmd.sendSerialComandAndRead(comboBoxSetLightSource.Text + textBoxBrightnessSet.Text + "_" + textBoxColorSet.Text, "button");
-                textBoxBrightnessSet.Text = "";
-                textBoxColorSet.Text = "";
+
+                if (comboBoxSetLightSource.Text == "Set_LightSource_01_")
+                {
+                    serialCmd.sendSerialComandAndRead(comboBoxSetLightSource.Text + textBoxBrightnessSet.Text + "_" + textBoxColorSet.Text, "button");
+                    textBoxBrightnessSet.Text = "";
+                    textBoxColorSet.Text = "";
+                }
+                else
+                {
+                    serialCmd.sendSerialComandAndRead(comboBoxSetLightSource.Text + textBoxFrequency.Text, "button");
+                    textBoxFrequency.Text = "";
+                }
             }
             else
-            {
-                serialCmd.sendSerialComandAndRead(comboBoxSetLightSource.Text + textBoxFrequency.Text, "button");
-                textBoxFrequency.Text = "";
-            }
+                MessageBox.Show("Invalid character Lenght!");
         }
 
         private void comboBoxSetLightSource_SelectedIndexChanged(object sender, EventArgs e)
