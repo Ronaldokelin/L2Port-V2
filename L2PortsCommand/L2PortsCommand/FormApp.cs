@@ -1,28 +1,27 @@
 ﻿using L2PortsCommand;
 using System;
 using System.Drawing;
-using System.IO.Ports;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace L2ARAutomationSerialPort
 {
     public partial class FormSerialPortAutomation : Form
     {
+        // Singleton instance of FormSerialPortAutomation
         private static FormSerialPortAutomation INSTANCE = null;
-        SerialCommands serialCmd;
-        // private object serialPort;
-        SerialPort serialPorts = new SerialPort();
+        SerialCommands serialCmd;       
         PowerSupply powerSupply;
 
         public FormSerialPortAutomation()
         {
             InitializeComponent();
-            INSTANCE = this;
-            //instanceSerialCommands();
+            INSTANCE = this;          
             instanceClasses();
             disableTexBox();
         }
 
+        // Method to get the singleton instance of FormSerialPortAutomation
         public static FormSerialPortAutomation getInstance()
         {
             if (INSTANCE == null)
@@ -30,11 +29,58 @@ namespace L2ARAutomationSerialPort
 
             return INSTANCE;
         }
-        private void instanceClasses() //instanceSerialCommands()
+
+        // Initialize the SerialCommands and PowerSupply classes
+        private void instanceClasses()
         {
             serialCmd = new SerialCommands();
             powerSupply = new PowerSupply();
+            serialCmd.SearchPortsExisting();
         }
+
+        // Event handler for the Search button click event
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.SearchPortsExisting();
+            }
+            catch
+            {
+                MessageBox.Show("Error to search the COM port");
+            }
+        }
+
+        // Event handler for the Reconnect button click event
+        private void btnReconnect_Click(object sender, EventArgs e)
+        {
+            serialCmd.CloseSerialPort();
+            serialCmd.ReconnectSerialPort();
+        }
+
+        // Event handler for the send commands button click event
+        private void buttonSend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead(textBoxSend.Text, "button");
+                textBoxSend.Text = ">";
+            }
+            catch
+            {
+                MessageBox.Show("Error to send the written command!");
+            }
+        }
+
+        // Event handler for Clear the textBoxResult on button click event
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxResult.Text = "";
+        }
+
+        // tabPageL2AR
+        // Event handler for the L2AR buttons click event
+        // Action commands
         private void buttonOpenDrawer_Click(object sender, EventArgs e)
         {
             try
@@ -42,6 +88,7 @@ namespace L2ARAutomationSerialPort
                 serialCmd.sendSerialComandAndRead("TWOON", "L2AR");
                 buttonOpenDrawer.BackColor = Color.Green;
                 buttonCloseDrawer.BackColor = Color.Red;
+
             }
             catch
             {
@@ -194,6 +241,19 @@ namespace L2ARAutomationSerialPort
             }
 
         }
+        private void btnSenEnd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("KEY", "L2AR");
+            }
+            catch
+            {
+                MessageBox.Show("Erro to send SendEnd command!");
+            }
+        }
+
+        // Configuration commands
         private void buttonAudio_Click(object sender, EventArgs e)
         {
             try
@@ -273,17 +333,28 @@ namespace L2ARAutomationSerialPort
                 MessageBox.Show("Error to send USBOFF command");
             }
         }
-        private void btnSenEnd_Click(object sender, EventArgs e)
+        private void btnDoorConfig_Click(object sender, EventArgs e)
+        {
+            FormCommandLoop formCommandLoop = new FormCommandLoop(serialCmd);
+            formCommandLoop.Show();
+        }
+
+        // Accessory Power Supply
+        // Event handler for the PowerSupply buttons click event
+        private void btnPowerSupply_Click(object sender, EventArgs e)
         {
             try
             {
-                serialCmd.sendSerialComandAndRead("KEY", "L2AR");
+                powerSupply.PowerSupplyCommands();
             }
             catch
             {
-                MessageBox.Show("Erro to send SendEnd command!");
+                MessageBox.Show("Error to set PowerSupply!");
             }
         }
+
+        // tabPageDepth
+        // Event handler for the DEPTH buttons click event
         private void buttonOrigin_Click(object sender, EventArgs e)
         {
             try
@@ -350,6 +421,9 @@ namespace L2ARAutomationSerialPort
                 MessageBox.Show("Error to send H1DOWN command!");
             }
         }
+
+        // tabPageL2Vision
+        // Event handler for the L2VISION buttons click event
         private void btnGetLigthVendor_Click(object sender, EventArgs e)
         {
             try
@@ -428,98 +502,111 @@ namespace L2ARAutomationSerialPort
             }
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            textBoxResult.Text = "";
-        }
-        private void buttonSend_Click(object sender, EventArgs e)
+        // tabPageSqt
+        // Event handler for the SQT buttons click event
+        private async void buttonMoveUp_Click(object sender, EventArgs e)
         {
             try
             {
-                serialCmd.sendSerialComandAndRead(textBoxSend.Text, "button");
-                textBoxSend.Text = "";
-            }
-            catch
-            {
-                MessageBox.Show("Error to send the written command!");
-            }
-        }
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                comboBoxPorts.Items.Clear();
-                string[] ports = SerialPort.GetPortNames();
-                comboBoxPorts.Items.AddRange(ports);
-            }
-            catch
-            {
-                MessageBox.Show("Error to search the COM port");
-            }
-        }
-        private void buttonMoveUp_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                serialCmd.sendSerialComandAndRead("H1UP", "SQT");
+                serialCmd.sendSerialComandAndRead("OUT1_ON", "SQT");
                 buttonMoveUp.BackColor = Color.Green;
                 buttonMoveDown.BackColor = Color.Red;
+                progressBarNear.Value = 0;
+                progressBarFar.Value = 0;
+
+                string response = null;
+                var stopwatch = new System.Diagnostics.Stopwatch();
+                stopwatch.Restart();
+                do
+                {
+                    await Task.Delay(100);
+                    textBoxResult.Text = "";
+                    response = serialCmd.sendSerialComandAndRead("IN2", "SQT");
+                    int elapsedTime = (int)stopwatch.ElapsedMilliseconds;
+                    progressBarFar.Value = Math.Min(elapsedTime, progressBarFar.Maximum);
+
+                } while (!response.Contains("IN2:0") && progressBarFar.Value < 3401);
+                stopwatch.Stop();
+
+                labelTFarValor.Text = $"{progressBarFar.Value} ms";
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error to send H1UP command!");
+                MessageBox.Show($"Erro ao enviar o comando OUT1_ON: {ex.Message}");
             }
         }
-        private void buttonMoveDown_Click(object sender, EventArgs e)
+        private async void buttonMoveDown_Click(object sender, EventArgs e)
         {
             try
             {
-                serialCmd.sendSerialComandAndRead("H1DOWN", "SQT");
+                serialCmd.sendSerialComandAndRead("OUT1_OFF", "SQT");
                 buttonMoveDown.BackColor = Color.Green;
                 buttonMoveUp.BackColor = Color.Red;
+                progressBarNear.Value = 0;
+                progressBarFar.Value = 0;
+
+                string response = null;
+                var stopwatch = new System.Diagnostics.Stopwatch();
+                stopwatch.Restart();
+                do
+                {
+                    await Task.Delay(100);
+                    textBoxResult.Text = "";
+                    response = serialCmd.sendSerialComandAndRead("IN1", "SQT");
+                    int elapsedTime = (int)stopwatch.ElapsedMilliseconds;
+                    progressBarNear.Value = Math.Min(elapsedTime, progressBarNear.Maximum);
+
+                } while (!response.Contains("IN1:0") && progressBarNear.Value < 3401);
+                stopwatch.Stop();
+
+                labelTNearValor.Text = $"{progressBarNear.Value} ms";
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error to send H1DOWN command!");
+                MessageBox.Show($"Erro ao enviar o comando OUT1_OFF: {ex.Message}");
             }
         }
         private void buttonLockDr_Click(object sender, EventArgs e)
         {
             try
             {
-                serialCmd.sendSerialComandAndRead("H2ON", "SQT");
+                serialCmd.sendSerialComandAndRead("OUT2_ON", "SQT");
                 buttonLockDr.BackColor = Color.Green;
                 buttonUnlockDr.BackColor = Color.Red;
             }
             catch
             {
-                MessageBox.Show("Error to send H2ON command!");
+                MessageBox.Show("Error to send OUT2_ON command!");
             }
         }
         private void buttonUnlockDr_Click(object sender, EventArgs e)
         {
             try
             {
-                serialCmd.sendSerialComandAndRead("H2OFF", "SQT");
+                serialCmd.sendSerialComandAndRead("OUT2_OFF", "SQT");
                 buttonUnlockDr.BackColor = Color.Green;
                 buttonLockDr.BackColor = Color.Red;
             }
             catch
             {
-                MessageBox.Show("Error to send H2OFF command!");
+                MessageBox.Show("Error to send OUT2_ON command!");
             }
         }
         private void buttonDrStatus_Click(object sender, EventArgs e)
         {
             try
             {
-                serialCmd.sendSerialComandAndRead("H1STATUS", "SQT");
+                textBoxResult.Text = "";
+                serialCmd.sendSerialComandAndRead("IN3", "SQT");
             }
             catch
             {
                 MessageBox.Show("Error to send H1STATUS command!");
             }
         }
+
+        // tabPageRGB
+        // Event handler for the RGB buttons click event
         private void buttonLightOn_Click(object sender, EventArgs e)
         {
             try
@@ -553,18 +640,6 @@ namespace L2ARAutomationSerialPort
                 MessageBox.Show("Error to send FETL command!");
             }
         }
-        private void btnPowerSupply_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                powerSupply.PowerSupplyCommands();
-            }
-            catch
-            {
-                MessageBox.Show("Error to set PowerSupply!");
-            }
-        }
-
         private void btnSendLightSource_Click(object sender, EventArgs e)
         {
             if (textBoxBrightnessSet.TextLength == 4 && textBoxColorSet.TextLength == 4 || textBoxFrequency.TextLength == 3)
@@ -585,7 +660,6 @@ namespace L2ARAutomationSerialPort
             else
                 MessageBox.Show("Invalid character Lenght!");
         }
-
         private void comboBoxSetLightSource_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -614,5 +688,129 @@ namespace L2ARAutomationSerialPort
             textBoxFrequency.Enabled = false;
         }
 
+        // tabPageFod
+        // // Event handler for the FOD buttons click event
+        private void btnMoveHome_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("1000400000", "FOD");
+            }
+            catch
+            {
+                MessageBox.Show("Error to send 1000400000 command!");
+            }
+
+        }
+        private void btnCheckInitial_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("4000000000", "FOD");
+            }
+            catch
+            {
+                MessageBox.Show("Error to send 4000000000 command!");
+            }
+        }
+        private void btnMoveChart_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("1000117100", "FOD");
+            }
+            catch
+            {
+                MessageBox.Show("Error to send 1000117100 command!");
+            }
+        }
+        private void btnChartDown_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("1100000000", "FOD");
+            }
+            catch
+            {
+                MessageBox.Show("Error to send 1100000000 command!");
+            }
+        }
+        private void btnChartUp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("1200000000", "FOD");
+            }
+            catch
+            {
+                MessageBox.Show("Error to send 1200000000 command!");
+            }
+        }
+        private void btnMoveDark_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("1000220900", "FOD");
+            }
+            catch
+            {
+                MessageBox.Show("Error to send 1000220900 command!");
+            }
+        }
+        private void btnDarkDown_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("1010000000", "FOD");
+            }
+            catch
+            {
+                MessageBox.Show("Error to send 1010000000 command!");
+            }
+        }
+        private void btnDarkUp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("1020000000", "FOD");
+            }
+            catch
+            {
+                MessageBox.Show("Error to send 1020000000 command!");
+            }
+        }
+        private void btnMoveFlesh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("1000324900", "FOD");
+            }
+            catch
+            {
+                MessageBox.Show("Error to send 1000324900 command!");
+            }
+        }
+        private void btnFleshDown_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("1001000000", "FOD");
+            }
+            catch
+            {
+                MessageBox.Show("Error to send 1001000000 command!");
+            }
+        }
+        private void btnFleshUp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialCmd.sendSerialComandAndRead("1002000000", "FOD");
+            }
+            catch
+            {
+                MessageBox.Show("Error to send 1002000000 command!");
+            }
+        }        
     }
 }

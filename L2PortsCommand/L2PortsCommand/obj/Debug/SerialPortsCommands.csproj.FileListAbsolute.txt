@@ -61,3 +61,4 @@ C:\Developer\L2Port-V2\L2PortsCommand\L2PortsCommand\obj\Debug\SerialPortsComman
 C:\Developer\L2Port-V2\L2PortsCommand\L2PortsCommand\obj\Debug\SerialPortsCommands.csproj.CopyComplete
 C:\Developer\L2Port-V2\L2PortsCommand\L2PortsCommand\obj\Debug\L2PortsCommand.exe
 C:\Developer\L2Port-V2\L2PortsCommand\L2PortsCommand\obj\Debug\L2PortsCommand.pdb
+C:\Developer\L2Port-V2\L2PortsCommand\L2PortsCommand\obj\Debug\L2PortsCommand.FormCommandLoop.resources

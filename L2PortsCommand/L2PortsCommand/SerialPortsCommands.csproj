@@ -66,12 +66,21 @@
     <Compile Include="FormApp.Designer.cs">
       <DependentUpon>FormApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCommandLoop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCommandLoop.Designer.cs">
+      <DependentUpon>FormCommandLoop.cs</DependentUpon>
+    </Compile>
     <Compile Include="PowerSupply.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerialCommands.cs" />
     <EmbeddedResource Include="FormApp.resx">
       <DependentUpon>FormApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCommandLoop.resx">
+      <DependentUpon>FormCommandLoop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
